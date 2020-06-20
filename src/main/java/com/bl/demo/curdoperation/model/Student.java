@@ -1,10 +1,17 @@
 package com.bl.demo.curdoperation.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Student {
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String name;
     private String email;
     private String contactNumber;
-    private String id;
+    @Id
+    private long id;
 
     public String getName() {
         return name;
@@ -30,11 +37,11 @@ public class Student {
         this.contactNumber = contactNumber;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }
