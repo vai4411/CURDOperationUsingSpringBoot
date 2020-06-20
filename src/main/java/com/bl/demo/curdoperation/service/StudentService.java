@@ -1,6 +1,6 @@
 package com.bl.demo.curdoperation.service;
 
-import com.bl.demo.curdoperation.repository.StudentDataRepository;
+import com.bl.demo.curdoperation.repository.IStudentDataRepository;
 import com.bl.demo.curdoperation.model.Result;
 import com.bl.demo.curdoperation.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class StudentService {
 
     @Autowired
-    StudentDataRepository studentDAO;
+    IStudentDataRepository studentDAO;
 
     public  ResponseEntity<Result>  insertStudent(Student student) {
         Result result = new Result();
