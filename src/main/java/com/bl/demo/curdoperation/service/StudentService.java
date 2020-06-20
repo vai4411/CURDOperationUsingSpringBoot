@@ -8,16 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
 public class StudentService {
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     @Autowired
     IStudentDataRepository studentDAO;
 
     public  ResponseEntity<Result>  insertStudent(Student student) {
         Result result = new Result();
+        student.setDatetime(dtf.format(LocalDateTime.now()));
         Student n = studentDAO.save(student);
         if (n == null) {
             result.setResultCode("-1");
@@ -68,12 +72,11 @@ public class StudentService {
             studentDAO.deleteById(id);
             result.setResultCode("0");
             result.setResultDescription("Student record deleted successfully");
-            return new ResponseEntity (result, HttpStatus.OK);
         }
         else {
             result.setResultCode("1");
             result.setResultDescription("Student record not deleted successfully");
-            return new ResponseEntity (result, HttpStatus.OK);
         }
+        return new ResponseEntity (result, HttpStatus.OK);
     }
 }

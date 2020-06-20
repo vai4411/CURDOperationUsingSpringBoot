@@ -8,10 +8,11 @@ public class Student {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String name;
-    private String email;
-    private String contactNumber;
     @Id
     private long id;
+    private String email;
+    private String contactNumber;
+    private String datetime;
 
     public String getName() {
         return name;
@@ -43,5 +44,13 @@ public class Student {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 }
